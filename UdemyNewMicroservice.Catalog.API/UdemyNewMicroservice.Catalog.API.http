@@ -1,0 +1,6 @@
+@UdemyNewMicroservice.Catalog.API_HostAddress = http://localhost:5045
+
+GET {{UdemyNewMicroservice.Catalog.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
