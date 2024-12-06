@@ -1,4 +1,5 @@
-﻿using MassTransit;
+﻿using AutoMapper;
+using MassTransit;
 using MediatR;
 using MicroserviceProject.Shared;
 using MicroserviceProject.Shared.Extensions;
@@ -13,15 +14,15 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.GetAll
 {
     public record GetAllCategoryQuery : IRequest<ServiceResult<List<CategoryDto>>>;
 
-    public class GetAllCategoryQueryHandler(AppDbContext context) : IRequestHandler<GetAllCategoryQuery, ServiceResult<List<CategoryDto>>>
+    public class GetAllCategoryQueryHandler(AppDbContext context, IMapper mapper) : IRequestHandler<GetAllCategoryQuery, ServiceResult<List<CategoryDto>>>
     {
         public async Task<ServiceResult<List<CategoryDto>>> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
         {
-            var categories = await context.Categories.ToListAsync();
-            //var mappedCategories = _mapper.Map<List<CategoryDto>>(categories);
-            var categoriesAsDto = categories.Select(x=>new CategoryDto(x.Id, x.Name)).ToList();
+            var categories = await context.Categories.ToListAsync(cancellationToken);
+            var mappedCategories = mapper.Map<List<CategoryDto>>(categories);
+            
 
-            return ServiceResult<List<CategoryDto>>.SucccessAsOk(categoriesAsDto);
+            return ServiceResult<List<CategoryDto>>.SucccessAsOk(mappedCategories);
         }
     }
 

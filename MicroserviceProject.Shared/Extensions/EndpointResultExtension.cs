@@ -13,8 +13,8 @@ namespace MicroserviceProject.Shared.Extensions
         {
             return result.Status switch
             {
-                System.Net.HttpStatusCode.OK => Results.Ok(result.Data),
-                System.Net.HttpStatusCode.Created => Results.Created(result.UrlAsCreated, result.Data),
+                System.Net.HttpStatusCode.OK => Results.Ok(result),
+                System.Net.HttpStatusCode.Created => Results.Created(result.UrlAsCreated, result),
                 System.Net.HttpStatusCode.NotFound => Results.NotFound(result.Fail!),
                 _ => Results.Problem(result.Fail!)
             };
