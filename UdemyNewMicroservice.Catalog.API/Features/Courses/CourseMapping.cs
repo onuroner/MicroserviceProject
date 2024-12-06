@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using UdemyNewMicroservice.Catalog.API.Features.Courses.Create;
+using UdemyNewMicroservice.Catalog.API.Features.Courses.Dto;
 
 
 namespace UdemyNewMicroservice.Catalog.API.Features.Courses
@@ -9,6 +10,8 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Courses
         public CourseMapping()
         {
             CreateMap<CreateCourseCommand, Course>();
+            CreateMap<Course, CourseDto>().ReverseMap();
+            CreateMap<Feature, FeatureDto>().ReverseMap();
         }
         
     }
