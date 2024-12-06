@@ -26,7 +26,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.GetAll
         }
     }
 
-    public static class GetAllCategoryEndpoint
+    public static class GetByIdCategoryEndpoint
     {
         public static RouteGroupBuilder GetAllCategoryGroupItemEndpoint(this RouteGroupBuilder group)
         {
