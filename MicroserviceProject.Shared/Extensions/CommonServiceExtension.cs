@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,8 @@ namespace MicroserviceProject.Shared.Extensions
         {
             services.AddHttpContextAccessor();
             services.AddMediatR(x => x.RegisterServicesFromAssemblyContaining(assembly));
+
+            services.AddValidatorsFromAssemblyContaining(assembly);
 
             return services;
         }

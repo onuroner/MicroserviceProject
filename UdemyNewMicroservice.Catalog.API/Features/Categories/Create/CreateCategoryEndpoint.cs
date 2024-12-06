@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using MicroserviceProject.Shared.Extensions;
+using MicroserviceProject.Shared.Filters;
 
 namespace UdemyNewMicroservice.Catalog.API.Features.Categories.Create
 {
@@ -11,7 +12,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.Create
             {
                 var result = await mediator.Send(command);
                 return result.ToGenericResult();
-            });
+            }).AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
 
             return group;
         }

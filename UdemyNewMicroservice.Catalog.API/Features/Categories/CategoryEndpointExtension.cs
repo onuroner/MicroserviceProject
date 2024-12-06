@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using MicroserviceProject.Shared.Filters;
 using Microsoft.AspNetCore.Mvc;
 using UdemyNewMicroservice.Catalog.API.Features.Categories.Create;
 

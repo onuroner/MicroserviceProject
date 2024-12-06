@@ -122,6 +122,7 @@ namespace MicroserviceProject.Shared
     public class ServiceResult<T> : ServiceResult
     {
         public T? Data { get; set; }
+        [JsonIgnore]
         public string? UrlAsCreated { get; set; }
 
         public static ServiceResult<T> SucccessAsOk(T data)
