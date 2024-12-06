@@ -6,7 +6,7 @@ using UdemyNewMicroservice.Catalog.API.Repositories;
 
 namespace UdemyNewMicroservice.Catalog.API.Features.Categories.Create
 {
-    public class CreateCategoryCommandHandler(AppDbContext context) : IRequestHandler<CreateCategoryCommand, ServiceResult<CreateCategoryResponse>>
+    public class CreateCourseCommandHandler(AppDbContext context) : IRequestHandler<CreateCategoryCommand, ServiceResult<CreateCategoryResponse>>
     {
         public async Task<ServiceResult<CreateCategoryResponse>> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
         {

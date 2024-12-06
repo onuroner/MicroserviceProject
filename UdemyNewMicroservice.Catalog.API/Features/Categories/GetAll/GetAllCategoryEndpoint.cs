@@ -26,7 +26,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.GetAll
         }
     }
 
-    public static class GetByIdCategoryEndpoint
+    public static class GetAllCategoryEndpoint
     {
         public static RouteGroupBuilder GetAllCategoryGroupItemEndpoint(this RouteGroupBuilder group)
         {
@@ -34,7 +34,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.GetAll
             {
                 var result = await mediator.Send(new GetAllCategoryQuery());
                 return result.ToGenericResult();
-            });
+            }).WithName("GetAllCategory");
 
             return group;
         }

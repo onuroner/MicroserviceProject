@@ -38,7 +38,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.GetById
             {
                 var result = await mediator.Send(new GetCategoryByIdQuery(id));
                 return result.ToGenericResult();
-            });
+            }).WithName("GetCategoryById");
 
             return group;
         }

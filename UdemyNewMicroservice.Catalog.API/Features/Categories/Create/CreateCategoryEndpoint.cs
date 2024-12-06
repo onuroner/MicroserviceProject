@@ -12,7 +12,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.Create
             {
                 var result = await mediator.Send(command);
                 return result.ToGenericResult();
-            }).AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
+            }).WithName("CreateCategory").AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
 
             return group;
         }

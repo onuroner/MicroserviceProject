@@ -7,11 +7,11 @@ using UdemyNewMicroservice.Catalog.API.Features.Categories.GetById;
 
 namespace UdemyNewMicroservice.Catalog.API.Features.Categories
 {
-    public static class CategoryEndpointExtension
+    public static class CourseEndpointExtension
     {
         public static void AddCategoryGroupEndpointExt(this WebApplication app)
         {
-            app.MapGroup("api/categories")
+            app.MapGroup("api/categories").WithTags("Categories")
                 .CreateCategoryGroupItemEndpoint()
                 .GetAllCategoryGroupItemEndpoint()
                 .GetCategoryByIdGroupItemEndpoint();
