@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using UdemyNewMicroservice.Catalog.API.Features.Categories;
 using UdemyNewMicroservice.Catalog.API.Features.Categories.Create;
+using UdemyNewMicroservice.Catalog.API.Features.Courses;
 using UdemyNewMicroservice.Catalog.API.Options;
 using UdemyNewMicroservice.Catalog.API.Repositories;
 
@@ -28,6 +29,7 @@ namespace UdemyNewMicroservice.Catalog.API
 
             var app = builder.Build();
             app.AddCategoryGroupEndpointExt();
+            app.AddCourseGroupEndpointExt();
             
 
 

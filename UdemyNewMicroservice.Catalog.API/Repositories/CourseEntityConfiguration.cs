@@ -18,7 +18,7 @@ namespace UdemyNewMicroservice.Catalog.API.Repositories
             modelBuilder.Property(x => x.CreatedDate).HasElementName("created");
             modelBuilder.Property(x => x.UserId).HasElementName("userId");
             modelBuilder.Property(x => x.CategoryId).HasElementName("categoryId");
-            modelBuilder.Property(x => x.Picture).HasElementName("picture");
+            modelBuilder.Property(x => x.ImageUrl).HasElementName("imageUrl");
             modelBuilder.Ignore(x => x.Category);
 
             modelBuilder.OwnsOne(f => f.Feature, feature =>
