@@ -1,7 +1,9 @@
 
 using MediatR;
+using MicroserviceProject.Shared.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using UdemyNewMicroservice.Catalog.API.Features.Categories;
 using UdemyNewMicroservice.Catalog.API.Features.Categories.Create;
 using UdemyNewMicroservice.Catalog.API.Options;
 using UdemyNewMicroservice.Catalog.API.Repositories;
@@ -22,18 +24,11 @@ namespace UdemyNewMicroservice.Catalog.API
             builder.Services.AddSwaggerGen();
             builder.Services.AddOptionsExtensions();
             builder.Services.AddRepositoryExtensions();
-
+            builder.Services.AddCommonServiceExt(typeof(Program));
 
             var app = builder.Build();
-
-            app.MapPost("categories", async(CreateCategoryCommand command, IMediator mediator) =>
-            {
-                var result = mediator.Send(command);
-                return new ObjectResult(result)
-                {
-                    StatusCode = result.Status.GetHashCode()
-                };
-            });
+            app.AddCategoryGroupEndpointExt();
+            
 
 
             // Configure the HTTP request pipeline.

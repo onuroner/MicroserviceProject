@@ -8,7 +8,7 @@ namespace UdemyNewMicroservice.Catalog.API.Options
         {
             services.AddOptions<MongoOptions>().BindConfiguration(nameof(MongoOptions)).ValidateDataAnnotations().ValidateOnStart();
 
-            services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoOptions>>().Value);
+            services.AddSingleton<MongoOptions>(sp => sp.GetRequiredService<IOptions<MongoOptions>>().Value);
 
             return services;
         }

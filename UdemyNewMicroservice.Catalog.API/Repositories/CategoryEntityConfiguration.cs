@@ -13,7 +13,6 @@ namespace UdemyNewMicroservice.Catalog.API.Repositories
             modelBuilder.ToCollection("categories");
             modelBuilder.HasKey(x => x.Id);
             modelBuilder.Property(x => x.Id).ValueGeneratedNever();
-            modelBuilder.Property(x => x.Name).HasElementName("name").HasMaxLength(100);
             modelBuilder.Ignore(x => x.Courses);
         }
     }
