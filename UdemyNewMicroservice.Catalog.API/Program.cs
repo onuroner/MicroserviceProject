@@ -26,10 +26,11 @@ namespace UdemyNewMicroservice.Catalog.API
             builder.Services.AddOptionsExtensions();
             builder.Services.AddRepositoryExtensions();
             builder.Services.AddCommonServiceExt(typeof(Program));
+            builder.Services.AddVersioningExt();
 
             var app = builder.Build();
-            app.AddCategoryGroupEndpointExt();
-            app.AddCourseGroupEndpointExt();
+            app.AddCategoryGroupEndpointExt(app.AddVersionSetExt());
+            app.AddCourseGroupEndpointExt(app.AddVersionSetExt());
             app.AddSeedDataExt().ContinueWith(x =>
             {
                 if(x.IsFaulted)

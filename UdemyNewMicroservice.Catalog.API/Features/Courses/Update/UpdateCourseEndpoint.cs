@@ -56,7 +56,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Courses.Update
             {
                 var result = await mediator.Send(command);
                 return result.ToGenericResult();
-            }).WithName("UpdateCourse")
+            }).MapToApiVersion(1, 0).WithName("UpdateCourse")
             .AddEndpointFilter<ValidationFilter<UpdateCourseCommand>>();
 
             return group;

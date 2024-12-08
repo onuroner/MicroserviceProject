@@ -39,7 +39,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Courses.GetAllByUserId
             {
                 var result = await mediator.Send(new GetCoursesByUserIdQuery(UserId));
                 return result.ToGenericResult();
-            }).WithName("GetCoursesByUserId");
+            }).MapToApiVersion(1, 0).WithName("GetCoursesByUserId");
 
             return group;
         }

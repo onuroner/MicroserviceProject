@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Asp.Versioning.Builder;
+using MediatR;
 using MicroserviceProject.Shared.Filters;
 using Microsoft.AspNetCore.Mvc;
 using UdemyNewMicroservice.Catalog.API.Features.Categories.Create;
@@ -15,9 +16,10 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Courses
 {
     public static class CourseEndpointExtension
     {
-        public static void AddCourseGroupEndpointExt(this WebApplication app)
+        public static void AddCourseGroupEndpointExt(this WebApplication app, ApiVersionSet apiVersionSet)
         {
-            app.MapGroup("api/courses").WithTags("Courses")
+            app.MapGroup("api/v{version:apiVersion}/courses").WithTags("Courses")
+                .WithApiVersionSet(apiVersionSet)
                 .CreateCourseGroupItemEndpoint()
                 .GetAllCoursesGroupItemEndpoint()
                 .GetCourseByIdGroupItemEndpoint()

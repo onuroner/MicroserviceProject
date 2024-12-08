@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Asp.Versioning.Builder;
+using MediatR;
 using MicroserviceProject.Shared.Extensions;
 using MicroserviceProject.Shared.Filters;
 
@@ -12,7 +13,7 @@ namespace UdemyNewMicroservice.Catalog.API.Features.Categories.Create
             {
                 var result = await mediator.Send(command);
                 return result.ToGenericResult();
-            }).WithName("CreateCategory").AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
+            }).WithName("CreateCategory").MapToApiVersion(1, 0).AddEndpointFilter<ValidationFilter<CreateCategoryCommand>>();
 
             return group;
         }
