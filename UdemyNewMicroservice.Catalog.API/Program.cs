@@ -13,7 +13,7 @@ namespace UdemyNewMicroservice.Catalog.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +30,17 @@ namespace UdemyNewMicroservice.Catalog.API
             var app = builder.Build();
             app.AddCategoryGroupEndpointExt();
             app.AddCourseGroupEndpointExt();
+            app.AddSeedDataExt().ContinueWith(x =>
+            {
+                if(x.IsFaulted)
+                {
+                    Console.WriteLine(x.Exception.Message);
+                }
+                else
+                {
+                    Console.WriteLine("Seed data created successfully.");
+                }
+            });
             
 
 
